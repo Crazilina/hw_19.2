@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'catalog/home.html')
 
 
 @ensure_csrf_cookie
@@ -28,4 +28,4 @@ def contacts(request):
         return HttpResponse("Спасибо за обратную связь!")
     else:
         # Если запрос - GET, просто показываем страницу контактов
-        return render(request, 'contacts.html')
+        return render(request, 'catalog/contacts.html')
