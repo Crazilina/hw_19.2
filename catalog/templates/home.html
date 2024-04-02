@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshMarket | Домашняя страница</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="#">FreshMarket</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'catalog:contacts' %}">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Добро пожаловать в FreshMarket!</h1>
+            <p class="lead">Лучшие свежие продукты для вашего дома.</p>
+            <hr class="my-4">
+            <p>Изучите наш ассортимент лучших продуктов.</p>
+            <a class="btn btn-success btn-lg" href="#" role="button">Посмотреть каталог</a>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <img src="https://via.placeholder.com/150" alt="Продукт 1" class="img-fluid mb-2">
+                <h5 class="mb-1">Продукт 1</h5>
+                <p class="text-muted">9.99 $</p>
+            </div>
+            <!-- Здесь можно добавить блоки с продуктами для других товаров, если нужно -->
+        </div>
+    </div>
+
+    <footer class="text-muted py-5 bg-light">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Наверх</a>
+            </p>
+            <p class="mb-1">FreshMarket &copy; Ваш надежный интернет-магазин.</p>
+        </div>
+    </footer>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
