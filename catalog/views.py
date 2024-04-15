@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http import HttpResponse
 
+from catalog.models import Product
+
 
 def home(request):
     return render(request, 'catalog/home.html')
@@ -29,3 +31,12 @@ def contacts(request):
     else:
         # Если запрос - GET, просто показываем страницу контактов
         return render(request, 'catalog/contacts.html')
+
+
+def product_detail(request, pk):
+    # Получаем объект товара по его primary key
+    product = Product.objects.get(pk=pk)
+    # Формируем контекст для передачи в шаблон
+    context = {'product': product}
+    # Отображаем шаблон с переданным контекстом
+    return render(request, 'product_detail.html', context)
