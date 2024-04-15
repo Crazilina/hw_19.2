@@ -6,7 +6,9 @@ from catalog.models import Product
 
 
 def home(request):
-    return render(request, 'catalog/home.html')
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'catalog/home.html', context)
 
 
 @ensure_csrf_cookie
@@ -39,4 +41,4 @@ def product_detail(request, pk):
     # Формируем контекст для передачи в шаблон
     context = {'product': product}
     # Отображаем шаблон с переданным контекстом
-    return render(request, 'product_detail.html', context)
+    return render(request, 'catalog/product_detail.html', context)

@@ -24,20 +24,20 @@
     </nav>
 
     <div class="container mt-5">
-        <div class="jumbotron">
-            <h1 class="display-4">Добро пожаловать в FreshMarket!</h1>
-            <p class="lead">Лучшие свежие продукты для вашего дома.</p>
-            <hr class="my-4">
-            <p>Изучите наш ассортимент лучших продуктов.</p>
-            <a class="btn btn-success btn-lg" href="#" role="button">Посмотреть каталог</a>
-        </div>
+        <h2>Список товаров</h2>
         <div class="row">
+            {% for product in products %}
             <div class="col-3">
-                <img src="https://via.placeholder.com/150" alt="Продукт 1" class="img-fluid mb-2">
-                <h5 class="mb-1">Продукт 1</h5>
-                <p class="text-muted">9.99 $</p>
+                <div class="card mb-3">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description|slice:":100" }}</p>
+                        <p class="card-text">Цена: {{ product.price }}</p>
+                    </div>
+                </div>
             </div>
-            <!-- Здесь можно добавить блоки с продуктами для других товаров, если нужно -->
+            {% endfor %}
         </div>
     </div>
 
