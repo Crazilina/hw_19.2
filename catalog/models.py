@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -32,3 +33,25 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    slug = models.CharField(max_length=200, unique=True, verbose_name='Slug')  # Используем CharField для slug
+    content = models.TextField(verbose_name='Содержимое')
+    preview = models.ImageField(upload_to='blog_previews/', verbose_name='Превью', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+    views_count = models.PositiveIntegerField(default=0, verbose_name='Количество просмотров')
+
+    class Meta:
+        verbose_name = 'Запись'
+        verbose_name_plural = 'Записи'
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(BlogPost, self).save(*args, **kwargs)

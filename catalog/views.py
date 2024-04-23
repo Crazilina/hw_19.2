@@ -1,8 +1,9 @@
-from django.views.generic import ListView, DetailView, View
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, View, CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
-from .models import Product
+from .models import Product, BlogPost
 
 
 class HomeListView(ListView):
@@ -34,3 +35,33 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'catalog/product_detail.html'
     context_object_name = 'product'
+
+
+class BlogPostListView(ListView):
+    model = BlogPost
+    # По умолчанию использует 'blogpost_list.html'
+
+
+class BlogPostDetailView(DetailView):
+    model = BlogPost
+    # По умолчанию использует 'blogpost_detail.html'
+
+
+class BlogPostCreateView(CreateView):
+    model = BlogPost
+    fields = ['title', 'slug', 'content', 'preview', 'is_published']
+    success_url = reverse_lazy('catalog:blogpost_list')
+    # По умолчанию использует 'blogpost_form.html'
+
+
+class BlogPostUpdateView(UpdateView):
+    model = BlogPost
+    fields = ['title', 'slug', 'content', 'preview', 'is_published']
+    success_url = reverse_lazy('catalog:blogpost_list')
+    # По умолчанию использует 'blogpost_form.html'
+
+
+class BlogPostDeleteView(DeleteView):
+    model = BlogPost
+    success_url = reverse_lazy('catalog:blogpost_list')
+    # По умолчанию использует 'blogpost_confirm_delete.html'
