@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">{{ post.content|truncatewords:30 }}</p>
-                    <a href="{% url 'catalog:blogpost_detail' post.pk %}" class="btn btn-primary">Подробнее</a>
+                    <a href="{% url 'catalog:blogpost_detail' post.slug %}" class="btn btn-primary">Подробнее</a>
                 </div>
             </div>
         </div>
